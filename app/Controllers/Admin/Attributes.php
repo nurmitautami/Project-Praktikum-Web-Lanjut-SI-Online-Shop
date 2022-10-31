@@ -91,6 +91,7 @@ class Attributes extends BaseController
 			return redirect()->to('/admin/attributes');
 		} else {
 			$this->getAttributes();
+            $this->data['attribute'] = $this->attributeModel->find($id);
 			$this->data['errors'] = $this->attributeModel->errors();
 			return view('admin/attributes/index', $this->data);
 		}
