@@ -14,11 +14,6 @@ class Attributes extends BaseController
         $this->attributeModel = new AttributeModel();
 
         $this->data['attributeTypes'] = $this->attributeModel::ATTRIBUTE_TYPES;
-        $this->data['isRequiredOptions'] = $this->attributeModel::IS_REQUIRED_OPTIONS;
-        $this->data['isUniqueOptions'] = $this->attributeModel::IS_UNIQUE_OPTIONS;
-        $this->data['validations'] = $this->attributeModel::VALIDATIONS;
-        $this->data['isConfigurableOptions'] = $this->attributeModel::IS_CONFIGURABLE_OPTIONS;
-        $this->data['isFilterableOptions'] = $this->attributeModel::IS_FILTERABLE_OPTIONS;
 
         $this->data['currentAdminMenu'] = 'catalogue';
         $this->data['currentAdminSubMenu'] = 'attribute';
@@ -54,11 +49,6 @@ class Attributes extends BaseController
             'code' => $request->getVar('code'),
             'name' => $request->getVar('name'),
             'type' => $request->getVar('type'),
-            'is_required' => $request->getVar('is_required'),
-            'is_unique' => $request->getVar('is_unique'),
-            'validation' => $request->getVar('validation'),
-            'is_configurable' => $request->getVar('is_configurable'),
-            'is_filterable' => $request->getVar('is_filterable'),
         ];
 
         if ($this->attributeModel->save($params)) {
@@ -79,11 +69,6 @@ class Attributes extends BaseController
             'code' => $request->getVar('code'),
             'name' => $request->getVar('name'),
             'type' => $request->getVar('type'),
-            'is_required' => $request->getVar('is_required'),
-            'is_unique' => $request->getVar('is_unique'),
-            'validation' => $request->getVar('validation'),
-            'is_configurable' => $request->getVar('is_configurable'),
-            'is_filterable' => $request->getVar('is_filterable'),
         ];
 
 		if ($this->attributeModel->save($params)) {

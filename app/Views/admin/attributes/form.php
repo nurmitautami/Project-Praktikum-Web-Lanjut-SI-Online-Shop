@@ -25,26 +25,6 @@
 				<label for="attributeType">Type</label>
 				<?= form_dropdown('type', $attributeTypes, set_value('type', isset($attribute->type) ? ($attribute->type) : '' ), ['class' => 'form-control', 'id' => 'attributeType']) ?>
 			</div>
-			<div class="form-group">
-				<label for="attributeIsRequired">Is Required?</label>
-				<?= form_dropdown('is_required', $isRequiredOptions, set_value('is_required', isset($attribute->is_required) ? ($attribute->is_required) : '' ), ['class' => 'form-control', 'id' => 'attributeIsRequired']) ?>
-			</div>
-			<div class="form-group">
-				<label for="attributeIsUnique">Is Unique?</label>
-				<?= form_dropdown('is_unique', $isUniqueOptions, set_value('is_unique', isset($attribute->is_unique) ? ($attribute->is_unique) : '' ), ['class' => 'form-control', 'id' => 'attributeIsUnique']) ?>
-			</div>
-			<div class="form-group">
-				<label for="attributeValidations">Validation</label>
-				<?= form_dropdown('validation', $validations, set_value('validation', isset($attribute->validation) ? ($attribute->validation) : '' ), ['class' => 'form-control', 'id' => 'attributeValidation']) ?>
-			</div>
-			<div class="form-group">
-				<label for="attributeIsConfigurable">Use in Configurable Product?</label>
-				<?= form_dropdown('is_configurable', $isConfigurableOptions, set_value('is_configurable', isset($attribute->is_configurable) ? ($attribute->is_configurable) : '' ), ['class' => 'form-control', 'id' => 'attributeIsConfigurable']) ?>
-			</div>
-			<div class="form-group">
-				<label for="attributeIsFilterable">Use in Filtering Product?</label>
-				<?= form_dropdown('is_filterable', $isFilterableOptions, set_value('is_filterable', isset($attribute->is_filterable) ? ($attribute->is_filterable) : '' ), ['class' => 'form-control', 'id' => 'attributeIsFilterable']) ?>
-			</div>
 		</div>
 		<!-- /.card-body -->
 
