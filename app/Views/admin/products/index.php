@@ -6,12 +6,12 @@
 	<div class="container-fluid">
 		<div class="row mb-2">
 		  <div class="col-sm-6">
-			<h1>Attribute Options</h1>
+			<h1>Products</h1>
 		  </div>
 		  <div class="col-sm-6">
 			<ol class="breadcrumb float-sm-right">
 			  <li class="breadcrumb-item"><a href="<?php echo site_url('admin/dashboard') ?>">Dashboard</a></li>
-			  <li class="breadcrumb-item active">Attribute Options</li>
+			  <li class="breadcrumb-item active">Products</li>
 			</ol>
 		  </div>
 		</div>
@@ -23,13 +23,10 @@
 	<div class="container-fluid">
 		<!-- /.row -->
 		<div class="row">
-			<div class="col-5">
-				<?= $this->include('admin/attribute_options/form') ?>
-			</div>
-		  	<div class="col-7">
+		  	<div class="col-12">
 				<div class="card">
 			  		<div class="card-header">
-					<h3 class="card-title">List of Attribute Options</h3>
+					<h3 class="card-title">List of Products</h3>
 					<div class="card-tools">
 						<div class="input-group input-group-sm" style="width: 150px;">
 							<input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -44,31 +41,52 @@
 					<table class="table table-hover text-nowrap">
 					<thead>
 						<tr>
-							<th>ID</th>
+							<th>SKU</th>
+							<th>Image</th>
 							<th>Name</th>
+							<th>Price</th>
+							<th>Stock</th>
+							<th>Status</th>
 							<th style="width:15%">Action</th>
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach ($attributeOptions as $attributeOption): ?>
+						<?php if ($products): ?>
+							<?php foreach ($products as $product): ?>
+								<tr>
+									<td><?= $product->sku ?></td>
+									<td></td>
+									<td><?= $product->name ?></td>
+									<td><?= $product->price ?></td>
+									<td><?= $product->qty ?></td>
+									<td><?= $statuses[$product->status] ?></td>
+									<td>
+										<a href="<?= site_url('admin/products/'. $product->id) ?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+										<form method="POST" action="<?= site_url('admin/brands/'. $product->id) ?>" accept-charset="UTF-8" class="delete" style="display:inline-block">
+											<input name="_method" type="hidden" value="DELETE">
+											<button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+										</form>
+									</td>
+								</tr>
+							<?php endforeach; ?>
+						<?php else: ?>
 							<tr>
-								<td><?= $attributeOption->id ?></td>
-								<td><?= $attributeOption->name ?></td>
-								<td>
-									<a href="<?= site_url('admin/attribute-options/'. $attribute->id .'/'. $attributeOption->id) ?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-									<form method="POST" action="<?= site_url('admin/attribute-options/'. $attributeOption->id) ?>" accept-charset="UTF-8" class="delete" style="display:inline-block">
-										<input name="_method" type="hidden" value="DELETE">
-										<button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
-									</form>
-								</td>
+								<td colspan="5">No record found</td>
 							</tr>
-						<?php endforeach; ?>
+						<?php endif; ?>
 					</tbody>
 					</table>
 			  	</div>
 				<!-- /.card-body -->
 				<div class="card-footer clearfix">
-					<?php echo $pager->links('bootstrap', 'bootstrap_pagination') ?> 
+					<div class="row">
+						<div class="col-8">
+							<?php echo $pager->links('bootstrap', 'bootstrap_pagination') ?>
+						</div>
+						<div class="col-4 text-right">
+							<a href="<?= site_url('admin/products/create') ?>" class="btn btn-success">New Product</a>
+						</div>
+					</div>
 				</div>
 			</div>
 			<!-- /.card -->
